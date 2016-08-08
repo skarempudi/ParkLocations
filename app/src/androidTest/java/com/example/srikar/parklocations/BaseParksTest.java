@@ -1,9 +1,10 @@
-package com.example.srikar.parklocations.model;
+package com.example.srikar.parklocations;
 
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.support.test.InstrumentationRegistry;
 
+import com.example.srikar.parklocations.model.ParkResponse;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -17,15 +18,15 @@ import java.util.List;
 import static junit.framework.Assert.assertTrue;
 
 /**
- * Base class for tests based on model classes
+ * Base class for tests that rely on loading initial list of parks.
  * Created by Srikar on 8/8/2016.
  */
-public class BaseModelTest {
+public class BaseParksTest {
     protected static final String ASSET_PARKS_FILE = "parks.json";
     protected static final int TEST_SIZE = 5;
     protected final Context context;
 
-    public BaseModelTest() {
+    public BaseParksTest() {
         //gets test context
         context = InstrumentationRegistry.getContext();
     }

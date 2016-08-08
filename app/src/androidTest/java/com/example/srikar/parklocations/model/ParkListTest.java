@@ -1,9 +1,9 @@
 package com.example.srikar.parklocations.model;
 
-import android.content.Context;
 import android.location.Location;
-import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
+
+import com.example.srikar.parklocations.BaseParksTest;
 
 import org.junit.After;
 import org.junit.Before;
@@ -20,7 +20,7 @@ import static junit.framework.Assert.assertTrue;
  * Created by Srikar on 8/8/2016.
  */
 @RunWith(AndroidJUnit4.class)
-public class ParkListTest extends BaseModelTest {
+public class ParkListTest extends BaseParksTest {
     private final ParkList parkList;
 
     public ParkListTest() {

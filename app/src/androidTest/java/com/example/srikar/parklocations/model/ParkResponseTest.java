@@ -1,23 +1,13 @@
 package com.example.srikar.parklocations.model;
 
-import android.content.Context;
-import android.content.res.AssetManager;
-import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import junit.framework.Assert;
+import com.example.srikar.parklocations.BaseParksTest;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.lang.reflect.Type;
 import java.util.List;
 
 import static junit.framework.Assert.assertTrue;
@@ -30,7 +20,7 @@ import static junit.framework.Assert.assertTrue;
  * Created by Srikar on 8/8/2016.
  */
 @RunWith(AndroidJUnit4.class)
-public class ParkResponseTest extends BaseModelTest {
+public class ParkResponseTest extends BaseParksTest {
     public ParkResponseTest() {
         super();
     }
