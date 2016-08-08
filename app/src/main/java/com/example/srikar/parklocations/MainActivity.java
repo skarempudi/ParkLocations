@@ -93,17 +93,15 @@ public class MainActivity extends AppCompatActivity implements
                 ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
-        LocationAvailability availability = LocationServices.FusedLocationApi
-                .getLocationAvailability(mGoogleApiClient);
-
-        Log.d(TAG, "onConnected: Available " + availability.isLocationAvailable());
-
 
         Location location = LocationServices.FusedLocationApi.getLastLocation(
                 mGoogleApiClient);
 
         Log.d(TAG, "onConnected: Latitude is " + location.getLatitude());
         Log.d(TAG, "onConnected: Longitude is " + location.getLongitude());
+
+        //set location and use to sort
+        ParkLocationsApp.getInstance().getParkList().setLocation(location);
     }
 
     @Override
