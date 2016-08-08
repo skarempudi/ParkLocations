@@ -30,13 +30,9 @@ import static junit.framework.Assert.assertTrue;
  * Created by Srikar on 8/8/2016.
  */
 @RunWith(AndroidJUnit4.class)
-public class ParkResponseTest {
-    private static final String ASSET_PARKS_FILE = "parks.json";
-    private final Context context;
-
+public class ParkResponseTest extends BaseModelTest {
     public ParkResponseTest() {
-        //gets test context
-        context = InstrumentationRegistry.getContext();
+        super();
     }
 
     /**
@@ -44,18 +40,10 @@ public class ParkResponseTest {
      */
     @Test
     public void testLoadParks() {
-        int TEST_SIZE = 5;
-
-        AssetManager assetManager = context.getAssets();
-        Gson gson = new Gson();
-
         //load from file
         List<ParkResponse> parks = null;
-        try(InputStream in = assetManager.open(ASSET_PARKS_FILE);
-            Reader reader = new InputStreamReader(in)) {
-
-            Type listType = new TypeToken<List<ParkResponse>>(){}.getType();
-            parks = gson.fromJson(reader, listType);
+        try {
+            parks = loadParks();
         } catch (IOException e) {
             e.printStackTrace();
             assertTrue("Opening assets failed",
