@@ -1,0 +1,81 @@
+[ {
+  "number" : "Number",
+  "psamanager" : "PSAManager",
+  "parktype" : "ParkType",
+  "parkname" : "ParkName",
+  "parkservicearea" : "ParkServiceArea",
+  "email" : "email"
+}
+, {
+  "zipcode" : "94118",
+  "number" : "(415) 601-6501",
+  "location_1" : {
+    "latitude" : "37.78184397",
+    "human_address" : "{\"address\":\"351 9th Ave\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"\"}",
+    "needs_recoding" : false,
+    "longitude" : "-122.46809908"
+  },
+  "psamanager" : "Elder, Steve",
+  "parktype" : "Mini Park",
+  "acreage" : "0.66",
+  "supdist" : "1",
+  "parkname" : "10TH AVE/CLEMENT MINI PARK",
+  "parkservicearea" : "PSA 1",
+  "email" : "steven.elder@sfgov.org",
+  "parkid" : "156"
+}
+, {
+  "zipcode" : "94122",
+  "number" : "(415) 218-2226",
+  "location_1" : {
+    "latitude" : "37.75956493",
+    "human_address" : "{\"address\":\"15th Ave b w Kirkham\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"\"}",
+    "needs_recoding" : false,
+    "longitude" : "-122.47226783"
+  },
+  "psamanager" : "Sheehy, Chuck",
+  "parktype" : "Mini Park",
+  "acreage" : "0.26",
+  "supdist" : "7",
+  "parkname" : "15TH AVENUE STEPS",
+  "parkservicearea" : "PSA 4",
+  "email" : "charles.sheehy@sfgov.org",
+  "parkid" : "185"
+}
+, {
+  "zipcode" : "94110",
+  "number" : "(415) 717-2872",
+  "location_1" : {
+    "latitude" : "37.75306042",
+    "human_address" : "{\"address\":\"24th\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"\"}",
+    "needs_recoding" : false,
+    "longitude" : "-122.40857543"
+  },
+  "psamanager" : "Field, Adrian",
+  "parktype" : "Mini Park",
+  "acreage" : "0.12",
+  "supdist" : "9",
+  "parkname" : "24TH/YORK MINI PARK",
+  "parkservicearea" : "PSA 6",
+  "email" : "adrian.field@sfgov.org",
+  "parkid" : "51"
+}
+, {
+  "zipcode" : "94131",
+  "number" : "(415) 819-2699",
+  "location_1" : {
+    "latitude" : "37.74360211",
+    "human_address" : "{\"address\":\"Diamond\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zip\":\"\"}",
+    "needs_recoding" : false,
+    "longitude" : "-122.43523589"
+  },
+  "psamanager" : "O'Brien, Teresa",
+  "parktype" : "Neighborhood Park or Playground",
+  "acreage" : "0.82",
+  "supdist" : "8",
+  "parkname" : "29TH/DIAMOND OPEN SPACE",
+  "parkservicearea" : "PSA 5",
+  "email" : "teresa.o'brien@sfgov.org",
+  "parkid" : "194"
+}
+]
