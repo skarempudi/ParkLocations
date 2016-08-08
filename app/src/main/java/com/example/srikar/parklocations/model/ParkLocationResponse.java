@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
  * Used to hold location object in Park JSON object
  * Created by Srikar on 8/4/2016.
  */
-public class LocationResponse {
+public class ParkLocationResponse {
     @SerializedName("latitude")
     private Float latitude;
     @SerializedName("human_address")

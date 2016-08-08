@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ParkLocations</string>
+    <string name="list_entry_unformatted">Name: %1$s\nManager: %2$s\nEmail: %3$s\nPhone: %4$s</string>
 </resources>

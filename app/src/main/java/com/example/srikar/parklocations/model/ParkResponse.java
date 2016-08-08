@@ -14,7 +14,7 @@ public class ParkResponse {
 
     //location is its own object
     @SerializedName("location_1")
-    private LocationResponse location;
+    private ParkLocationResponse location;
 
     @SerializedName("psamanager")
     private String psaManager;
@@ -50,11 +50,11 @@ public class ParkResponse {
         this.phoneNumber = phoneNumber;
     }
 
-    public LocationResponse getLocation() {
+    public ParkLocationResponse getLocation() {
         return location;
     }
 
-    public void setLocation(LocationResponse location) {
+    public void setLocation(ParkLocationResponse location) {
         this.location = location;
     }
 

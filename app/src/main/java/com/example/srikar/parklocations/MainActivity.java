@@ -8,11 +8,14 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import com.example.srikar.parklocations.json.JsonLoader;
 import com.example.srikar.parklocations.model.ParkResponse;
 import com.example.srikar.parklocations.json.RetrofitInterface;
+import com.example.srikar.parklocations.recyclerview.ParkListAdapter;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationAvailability;
@@ -33,21 +36,14 @@ public class MainActivity extends AppCompatActivity implements
     private GoogleApiClient mGoogleApiClient;
     private boolean hasPermission = false;
 
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        //test JSON call
-        RetrofitInterface retrofitService = ParkLocationsApplication.getInstance()
-                .getRetrofit()
-                .create(RetrofitInterface.class);
-
-        retrofitService.getParkList()
-                .subscribeOn(Schedulers.newThread())
-                .doOnError(t -> Log.e(TAG, "JSON server retrieval" , t))
-                .onErrorResumeNext(t -> Observable.empty())
-                .subscribe(this::onComplete);
 
         //get permission
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED
@@ -69,25 +65,15 @@ public class MainActivity extends AppCompatActivity implements
                     .addApi(LocationServices.API)
                     .build();
         }
-    }
 
-    private void onComplete(List<ParkResponse> parks) {
-        Log.d(TAG, "onResponse: Number of parks received is " + parks.size());
-        //see first real park
-        String address = parks.get(1).getLocation().getUnformattedAddress();
-        Log.d(TAG, "onResponse: " + address);
-
-        Log.d(TAG, "onResponse: Doing file stuff");
-
-        //save to file
-        JsonLoader.saveToFile(parks);
-
-        //read from file
-        List<ParkResponse> parks2 = JsonLoader.readFromFile();
-        Log.d(TAG, "onResponse: Number of parks received is " + parks2.size());
-        //see first real park
-        address = parks2.get(1).getLocation().getUnformattedAddress();
-        Log.d(TAG, "onResponse: " + address);
+        //recycler view
+        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        //use a linear layout manager
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        //set adapter
+        mAdapter = new ParkListAdapter();
+        mRecyclerView.setAdapter(mAdapter);
     }
 
     protected void onStart() {

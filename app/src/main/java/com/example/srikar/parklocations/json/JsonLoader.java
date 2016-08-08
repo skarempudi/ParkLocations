@@ -2,7 +2,7 @@ package com.example.srikar.parklocations.json;
 
 import android.util.Log;
 
-import com.example.srikar.parklocations.ParkLocationsApplication;
+import com.example.srikar.parklocations.ParkLocationsApp;
 import com.example.srikar.parklocations.model.ParkResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -50,7 +50,7 @@ public class JsonLoader {
      * @return List of parks from file
      */
     protected static List<ParkResponse> readFromFile(String fileName) {
-        File dir = ParkLocationsApplication.getInstance().getFilesDir();
+        File dir = ParkLocationsApp.getInstance().getFilesDir();
         File file = new File(dir, fileName);
 
         Gson gson = new Gson();
@@ -88,7 +88,7 @@ public class JsonLoader {
             return;
         }
 
-        File dir = ParkLocationsApplication.getInstance().getFilesDir();
+        File dir = ParkLocationsApp.getInstance().getFilesDir();
         File file = new File(dir, fileName);
         try (Writer writer = new FileWriter(file)) {
             Gson gson = new GsonBuilder()
