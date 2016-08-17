@@ -88,20 +88,7 @@ public class MainActivity extends AppCompatActivity implements
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
-        if (!hasPermission ||
-                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            return;
-        }
-
-        Location location = LocationServices.FusedLocationApi.getLastLocation(
-                mGoogleApiClient);
-
-        Log.d(TAG, "onConnected: Latitude is " + location.getLatitude());
-        Log.d(TAG, "onConnected: Longitude is " + location.getLongitude());
-
-        //set location and use to sort
-        ParkLocationsApp.getInstance().getParkList().setLocation(location);
+        setLocation();
     }
 
     @Override
@@ -121,12 +108,36 @@ public class MainActivity extends AppCompatActivity implements
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 hasPermission = true;
                 Log.d(TAG, "onRequestPermissionsResult: Got permission");
+                //try getting location again
+                if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
+                    setLocation();
+                }
             }
             else {
                 hasPermission = false;
                 Log.d(TAG, "onRequestPermissionsResult: Permission denied");
             }
         }
+    }
+
+    /**
+     * Retrieve the user location and use to sort list
+     */
+    private void setLocation() {
+        if (!hasPermission ||
+                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                        ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+
+        Location location = LocationServices.FusedLocationApi.getLastLocation(
+                mGoogleApiClient);
+
+        Log.d(TAG, "onConnected: Latitude is " + location.getLatitude());
+        Log.d(TAG, "onConnected: Longitude is " + location.getLongitude());
+
+        //set location and use to sort
+        ParkLocationsApp.getInstance().getParkList().setLocation(location);
     }
 
 }

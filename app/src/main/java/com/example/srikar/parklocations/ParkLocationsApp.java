@@ -13,6 +13,7 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import rx.Observable;
+import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
@@ -66,6 +67,7 @@ public class ParkLocationsApp extends Application {
                 .subscribeOn(Schedulers.newThread())
                 .doOnError(t -> Log.e(TAG, "JSON server retrieval" , t))
                 .onErrorResumeNext(t -> Observable.empty())
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::onJSONRequestComplete);
     }
 
